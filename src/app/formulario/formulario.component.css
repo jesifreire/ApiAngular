@@ -1,0 +1,49 @@
+body, footer {
+    background-color:#ffffff;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Geneva, sans-serif;
+}
+  
+
+.topo {
+    background-color:#804473;
+    color: white;
+    width: 40%;
+    padding: 5px;
+    padding-bottom: 2px;
+    margin: auto;
+    text-align: center;
+    float: center;
+    margin-top: 50px;
+    margin-bottom: -15px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.formulario {
+    background-color:#653d86;
+    width: 35%;
+    margin: auto;
+    margin-bottom: 50px;
+    color:#7a9dc4;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+#btnCadastrar {
+    margin-left: 350px;
+}
+
+.tabela {
+    background-color: #a883b1;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 50px;
+    color:#771a6f;
+    border-radius: 6px;
+    padding: 14px;
+}
+
+.footer {
+    text-align: center;
+}

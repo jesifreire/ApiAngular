@@ -1,0 +1,96 @@
+<body>
+  <div class="col-xl-4 col-md-6 col-sm topo">
+    <h3>Bem vindo ao Sistema de Agendamento!</h3>
+    <h5>Para que seu atendimento seja válido <br>Você precisa preencher o formulário abaixo<br> e clicar em cadastrar!</h5>
+  </div>
+  
+  <div class="formulario">
+    <form (ngSubmit)="saveAgendamento(f)" #f="ngForm">
+      <div>
+          <label for="name"><b>Nome:</b></label>
+          <input type="text" [(ngModel)]="agendamento.nome" id="nome" name="nome" #name="ngModel" required class="form-control"  
+          placeholder="Digite o nome completo"  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" >
+      </div>
+      <div class="row">
+        <div class="col-md-7">
+          <label for="data"><b>Data do Agendamento:</b></label>
+          <input type="text" [(ngModel)]="agendamento.data" id="data" name="data" #name="ngModel" required class="form-control"  
+          placeholder="Digite a data do agendamento"  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" >
+        </div>
+        <div class="col-md-5">
+            <label for="tipo"><b>Tipo:</b></label>
+            <select class="form-control" type="text" [(ngModel)]="agendamento.tipo" id="tipo" name="tipo" #name="ngModel" required class="form-control"  
+            placeholder="Digite a Nome"  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" >
+                <option selected>Selecione uma opção...</option>
+                <option value="1">Acadêmico</option>
+                <option value="2">Financeiro</option>
+                <option value="3">Diversos</option>
+            </select>
+        </div>
+      </div>
+      <div>
+          <label for="coordenador"><b>Coordenador:</b></label>
+          <input type="text" [(ngModel)]="agendamento.coordenador" id="coordenador" name="coordenador" #name="ngModel" required class="form-control"  
+          placeholder="Digite o nome do coordenador"  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" >
+      </div>
+      <div>
+          <label for="assunto"><b>Assunto:</b></label>
+          <input type="text" [(ngModel)]="agendamento.assunto" id="assunto" name="assunto" #name="ngModel" required class="form-control"  
+          placeholder="Digite o assunto"  [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" >
+      </div>
+      <div>
+          <label for="descricao"><b>Descrição:</b></label>
+          <textarea class="form-control" rows="3" type="text" [(ngModel)]="agendamento.descricao" id="descricao" name="descricao" #name="ngModel" required class="form-control"  
+          [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" >
+          </textarea>
+      </div>
+      
+      <div>
+        <br>
+        <button id ="btnCadastrar" class="btn btn-dark btn-sm" type="submit" [disabled]="f.form.invalid">Cadastrar</button>
+    </div>
+  </form>
+  </div>
+   
+  
+  <div class="tabela table-responsive">
+      <button class="btn btn-dark btn-sm ml-1" (click)="getAgendamentos()" type="button">Listar Todos</button>
+      <div class=" table-responsive card-body">
+        <table class="table table-over table-dark">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Data do Agendamento</th>
+                <th scope="col">Tipo</th>        
+                <th scope="col">Coordenador</th>
+                <th scope="col">Assunto</th>
+                <th scope="col">Descrição</th>
+                <th scope="col" colspan="2">Ação</th>       
+              </tr>
+            </thead>
+            <tbody class="tbody-ligth">
+              <tr *ngFor="let agendamento of agendamentos">
+                <td>{{agendamento.id}}</td>
+                <td>{{agendamento.nome}}</td>
+                <td>{{agendamento.data}}</td>
+                <td>{{agendamento.tipo}}</td>
+                <td>{{agendamento.coordenador}}</td>
+                <td>{{agendamento.assunto}}</td>
+                <td>{{agendamento.descricao}}</td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-sm"  (click)="editAgendamento(agendamento)" routerLink="/agendamento-update/{{agendamento.id}}" routerLinkActive="active">Agendar</button>                  
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteAgendamento(agendamento)">Apagar</button>                  
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+      </div>
+  </div>
+</body>
+<footer>
+   <p>& copy; 2020.2 SPI - P4</p>
+</footer>
